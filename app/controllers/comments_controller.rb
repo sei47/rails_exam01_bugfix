@@ -2,8 +2,14 @@ class CommentsController < ApplicationController
   before_action :set_blog, only: [:create, :destroy]
 
   def create
+    # エラー原因: バリデーション後エラーメッセージが表示されていなかった
+    # 修正の意図: 条件式を追加して表示できるように変更
     @comment = @blog.comments.create(comment_params)
-    redirect_to blog_path(@blog)
+    if @comment.save
+      redirect_to blog_path(@blog)
+    else
+      redirect_to blog_path(@blog), notice: "だめです"
+    end
   end
 
   def destroy
