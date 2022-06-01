@@ -1,4 +1,6 @@
-<%= form_with(model: Blog.new, local: true) do |form| %>
+<!-- エラー原因: Blog.newで毎回新しいフォームが表示されていた
+# 修正の意図:model: @blogに変更して値が反映されるように変更  -->
+<%= form_with(model: @blog, local: true) do |form| %>
   <% if blog.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(blog.errors.count, "error") %> prohibited this blog from being saved:</h2>

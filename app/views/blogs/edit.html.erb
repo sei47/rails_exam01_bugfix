@@ -1,6 +1,7 @@
 <h1>Editing Blog</h1>
-
-<% render 'form', blog: @blog %>
+<!-- エラー原因: エディット画面に共通化が反映されていない
+# 修正の意図:=を付けて画面に反映されるよう変更  -->
+<%= render 'form', blog: @blog %>
 
 <%= link_to 'Show', @blog %> |
 <%= link_to 'Back', blogs_path %>
