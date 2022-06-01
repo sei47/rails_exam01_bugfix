@@ -1,0 +1,9 @@
+<h1>New Blog</h1>
+
+<%= render 'form', blog: @blog %>
+
+<%= link_to 'Back', blogs_path %>
+
+<!--
+エラー原因:ファイル名の先頭に＿が付いていたためnoformaterrorが発生
+修正の意図：ファイルを読み込むために先頭の＿を削除-->
