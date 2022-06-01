@@ -9,7 +9,9 @@ class CommentsController < ApplicationController
   def destroy
     @comment = @blog.comments.find(params[:id])
     @comment.destroy
-    redirect_to
+    # エラー原因: redirect_to のリンク先が書かれていなかった
+    # 修正の意図: show画面に戻れるよう追記
+    redirect_to blog_path(@blog)
   end
 
   private
