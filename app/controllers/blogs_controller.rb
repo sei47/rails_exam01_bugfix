@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update]
+  before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
   def index
     @blogs = Blog.all
@@ -42,6 +42,8 @@ class BlogsController < ApplicationController
   end
 
   def blog_params
-    params.require(:blog).permit(:title)
+    # エラー原因: titleしか値が入れられないようになっていた
+    # 修正の意図: contentをストロングパラメータに追加
+    params.require(:blog).permit(:title, :content)
   end
 end
